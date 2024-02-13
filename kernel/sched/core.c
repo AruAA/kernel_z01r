@@ -3477,13 +3477,11 @@ int sched_fork(unsigned long clone_flags, struct task_struct *p)
 void sched_post_fork(struct task_struct *p)
 {
 	uclamp_post_fork(p);
-}
-
-void sched_post_fork(struct task_struct *p)
-{
+	
 #ifdef CONFIG_SCHED_BORE
 	fork_burst_penalty(p);
 #endif // CONFIG_SCHED_BORE
+
 }
 
 unsigned long to_ratio(u64 period, u64 runtime)
